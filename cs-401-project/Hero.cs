@@ -46,9 +46,10 @@ public class Hero
         }
     }
 
-    public Hero(string name)
+    public Hero(string name, string tag = "0000")
     {
         Name = name;
+        Tag = tag;
         Level = 0;
     }
 

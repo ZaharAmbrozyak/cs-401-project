@@ -41,4 +41,16 @@ public abstract class Item
         _rarity = rarity;
     }
     public abstract void Use(Hero hero);
+
+    public string GetRarety()
+    {
+        return _rarity switch
+        {
+            Rarity.Common => "Common",
+            Rarity.Rare => "Rare",
+            Rarity.Epic => "Epic",
+            Rarity.Legendary => "Legendary",
+            _ => "Unknown"
+        };
+    }
 }
