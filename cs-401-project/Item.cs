@@ -32,7 +32,13 @@ public abstract class Item
         }
     }
 
-    private Rarity rarity;
+    private Rarity _rarity;
 
+    public Item(string name, double weight, Rarity rarity)
+    {
+        Name = name;
+        Weight = weight;
+        _rarity = rarity;
+    }
     public abstract void Use(Hero hero);
 }
