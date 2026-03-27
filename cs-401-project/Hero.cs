@@ -46,11 +46,46 @@ public class Hero
         }
     }
 
+    public double MaxHp
+    {
+        get;
+        set
+        {
+            if (value < 0)
+            {
+                throw new ArgumentException("Max hp should be positive!");
+            }
+
+            field = value;
+        }
+    }
+    
+    public double CurrentHp
+    {
+        get;
+        set
+        {
+            if (value < 0)
+            {
+                field = 0;
+            }
+            else if (value + CurrentHp > MaxHp)
+            {
+                field = MaxHp;
+            }
+            
+            field = value;
+        }
+    }
+    
+    private Inventory<Item> _inventory = new(10);
+    
     public Hero(string name, string tag = "0000")
     {
         Name = name;
         Tag = tag;
         Level = 0;
+        MaxHp = 100;
     }
 
     public string GetNickname() => Name + "#" + Tag;
