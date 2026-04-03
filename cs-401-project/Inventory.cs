@@ -38,11 +38,26 @@ public class Inventory<T> where T : Item
 
     public void Remove(T item)
     {
-        
+        foreach (var inventoryItem in _inventory)
+        {
+            if (item.Equals(inventoryItem))
+            {
+                _inventory.Remove(item);
+                return;
+            }
+        }
     }
 
-    public T GetByName(string name)
+    public T? GetByName(string name)
     {
-        throw new NotImplementedException();
+        foreach (var item in _inventory)
+        {
+            if (item.Name.Contains(name, StringComparison.OrdinalIgnoreCase))
+            {
+                return item;
+            }
+        }
+
+        return null;
     }
 }
