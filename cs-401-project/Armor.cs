@@ -9,6 +9,6 @@ public class Armor : Item
 
     public override void Use(Hero hero)
     {
-        throw new NotImplementedException();
+        
     }
 }

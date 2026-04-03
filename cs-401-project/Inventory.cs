@@ -25,7 +25,15 @@ public class Inventory<T> where T : Item
 
     public void Add(T item)
     {
-        _inventory.Add(item);
+        if (_inventory.Count < MaxWeight)
+        {
+            _inventory.Add(item);
+        }
+        else
+        {
+            throw new ArgumentException("Cannot add this item: inventory is full!");
+        }
+        
     }
 
     public void Remove(T item)
