@@ -98,4 +98,15 @@ public class Hero
     {
         return $"{Nickname}: Lvl {Level},  Armor {ArmorAmount}, Damage {DamageAmount}";
     }
+
+    public void AddItem(Item item)
+    {
+        _inventory.Add(item);
+    }
+
+    public void DropItem(Item item)
+    {
+        _inventory.Remove(item);
+    }
+    
 }
