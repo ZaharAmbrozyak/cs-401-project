@@ -30,6 +30,10 @@ public class Potion : Item
     {
         var previousHp = hero.CurrentHp;
         hero.CurrentHp += HealAmount;
-        Console.WriteLine($"{hero.Name} used {Name}. HP: {previousHp} -> {hero.CurrentHp + HealAmount}");
+
+        var difference = hero.CurrentHp - previousHp;
+        
+        Console.WriteLine($"{hero.Name} випив {Name}. HP: {previousHp} -> {hero.CurrentHp} (зміна {difference})");
+        hero.RemoveItem(this);
     }
 }

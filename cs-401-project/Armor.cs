@@ -27,6 +27,14 @@ public class Armor : Item
     
     public override void Use(Hero hero)
     {
+        var difference = hero.ArmorAmount - ArmorAmount;
+        var sign = string.Empty;
+        if (difference > 0)
+        {
+            sign = "+";
+        }
+
+        Console.WriteLine($"{hero.Name} одягнув {Name}. ATK: {hero.ArmorAmount} -> {ArmorAmount} (зміна {sign}{difference})");
         hero.CurrentArmor = this;
     }
 }

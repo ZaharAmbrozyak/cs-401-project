@@ -47,6 +47,7 @@ public class Inventory<T> : IEnumerable<T> where T : Item
         }
         _inventory.Add(item);
         
+        Console.WriteLine("Предмет додано в інвентар.");
     }
 
     public IEnumerator<T> GetEnumerator()
@@ -69,6 +70,7 @@ public class Inventory<T> : IEnumerable<T> where T : Item
                 return;
             }
         }
+        Console.WriteLine("Предмет видалено з інвентаря.");
     }
 
     public T? GetByName(string name)
@@ -89,7 +91,7 @@ public class Inventory<T> : IEnumerable<T> where T : Item
         _inventory.Sort();
     }
 
-    public void PrintInventory()
+    public void Print()
     {
         for (var i = 0; i < _inventory.Count; i++)
         {

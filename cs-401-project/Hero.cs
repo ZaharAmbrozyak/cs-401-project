@@ -104,9 +104,15 @@ public class Hero
         _inventory.Add(item);
     }
 
-    public void DropItem(Item item)
+    public void RemoveItem(Item item)
     {
         _inventory.Remove(item);
+    }
+
+    public void PrintInventory()
+    {
+        Console.WriteLine($"Інвентар героя {Name} (HP: {CurrentHp}, ATK: {DamageAmount}), DEF: {ArmorAmount}");
+        _inventory.Print();
     }
     
 }

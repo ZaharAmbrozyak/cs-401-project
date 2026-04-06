@@ -27,6 +27,14 @@ public class Weapon : Item
 
     public override void Use(Hero hero)
     {
+        var difference = hero.DamageAmount - DamageAmount;
+        var sign = string.Empty;
+        if (difference > 0)
+        {
+            sign = "+";
+        }
+        
+        Console.WriteLine($"{hero.Name} одягнув {Name}. ATK: {hero.DamageAmount} -> {DamageAmount} (зміна {sign}{difference})");
         hero.CurrentWeapon = this;
     }
 }
