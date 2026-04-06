@@ -88,6 +88,12 @@ public class Inventory<T> : IEnumerable<T> where T : Item
     {
         _inventory.Sort();
     }
-    
-    
+
+    public void PrintInventory()
+    {
+        foreach (var item in _inventory)
+        {
+            Console.WriteLine($"{item.Name}: {item.GetRarity()}");
+        }
+    }
 }
