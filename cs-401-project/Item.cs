@@ -2,7 +2,7 @@ using System.Reflection.Metadata;
 
 namespace cs_401_project;
 
-public abstract class Item
+public abstract class Item : IComparable<Item>
 {
     public string Name
     {
@@ -52,5 +52,15 @@ public abstract class Item
             Rarity.Legendary => "Legendary",
             _ => "Unknown"
         };
+    }
+
+    public int CompareTo(Item? other)
+    {
+        if (other == null)
+        {
+            return 1;
+        }
+
+        return this._rarity.CompareTo(other._rarity);
     }
 }

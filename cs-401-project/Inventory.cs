@@ -84,5 +84,10 @@ public class Inventory<T> : IEnumerable<T> where T : Item
         return null;
     }
 
+    public void SortByRarity()
+    {
+        _inventory.Sort();
+    }
+    
     
 }
