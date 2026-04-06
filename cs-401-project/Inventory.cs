@@ -91,9 +91,10 @@ public class Inventory<T> : IEnumerable<T> where T : Item
 
     public void PrintInventory()
     {
-        foreach (var item in _inventory)
+        for (var i = 0; i < _inventory.Count; i++)
         {
-            Console.WriteLine($"{item.Name}: {item.GetRarity()}");
+            Console.WriteLine($"{i}. {_inventory[i].GetInfo()}");
         }
+        Console.WriteLine($"Вага: {InventoryWeight} / {MaxWeight}");
     }
 }
