@@ -2,13 +2,26 @@ namespace cs_401_project;
 
 public class Weapon : Item
 {
-    public Weapon(string name, double weight, Rarity rarity) : base(name, weight, rarity)
+    public double DamageAmount
     {
-        
+        get;
+        private set
+        {
+            if (value < 0)
+            {
+                throw new ArgumentException("Damage should be positive!");
+            }
+
+            field = value;
+        }
+    }
+    public Weapon(string name, double weight, Rarity rarity, double damageAmount) : base(name, weight, rarity)
+    {
+        DamageAmount = damageAmount;
     }
 
     public override void Use(Hero hero)
     {
-        throw new NotImplementedException();
+        hero.CurrentWeapon = this;
     }
 }

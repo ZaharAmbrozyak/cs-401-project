@@ -23,6 +23,8 @@ public class Potion : Item
 
     public override void Use(Hero hero)
     {
-        Console.WriteLine($"{hero.Name} used {Name}. HP: {hero.CurrentHp} -> {hero.CurrentHp + HealAmount}");
+        var previousHp = hero.CurrentHp;
+        hero.CurrentHp += HealAmount;
+        Console.WriteLine($"{hero.Name} used {Name}. HP: {previousHp} -> {hero.CurrentHp + HealAmount}");
     }
 }

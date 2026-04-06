@@ -7,7 +7,7 @@ public abstract class Item
     public string Name
     {
         get;
-        set
+        init
         {
             if (string.IsNullOrEmpty(value))
             {
@@ -42,7 +42,7 @@ public abstract class Item
     }
     public abstract void Use(Hero hero);
 
-    public string GetRarety()
+    public string GetRarity()
     {
         return _rarity switch
         {

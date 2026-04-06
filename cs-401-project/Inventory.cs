@@ -1,9 +1,25 @@
+using System.Collections;
+
 namespace cs_401_project;
 
-public class Inventory<T> where T : Item
+public class Inventory<T> : IEnumerable<T> where T : Item
 {
     private List<T> _inventory = [];
+    
+    public double InventoryWeight
+    {
+        get
+        {
+            var inventoryWeight = 0.0;
+            foreach (var item in _inventory)
+            {
+                inventoryWeight += item.Weight;
+            }
 
+            return inventoryWeight;
+        }
+    }
+    
     public double MaxWeight
     {
         get;
@@ -25,17 +41,24 @@ public class Inventory<T> where T : Item
 
     public void Add(T item)
     {
-        if (_inventory.Count < MaxWeight)
-        {
-            _inventory.Add(item);
-        }
-        else
+        if (InventoryWeight + item.Weight > MaxWeight)
         {
             throw new ArgumentException("Cannot add this item: inventory is full!");
         }
+        _inventory.Add(item);
         
     }
 
+    public IEnumerator<T> GetEnumerator()
+    {
+        return _inventory.GetEnumerator();
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+    
     public void Remove(T item)
     {
         foreach (var inventoryItem in _inventory)
@@ -60,4 +83,6 @@ public class Inventory<T> where T : Item
 
         return null;
     }
+
+    
 }

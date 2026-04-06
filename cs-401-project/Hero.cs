@@ -77,6 +77,12 @@ public class Hero
             field = value;
         }
     }
+
+    public Armor CurrentArmor { get; set; }
+    public Weapon CurrentWeapon { get; set; }
+    public double ArmorAmount => CurrentArmor.ArmorAmount;
+    public double DamageAmount => CurrentWeapon.DamageAmount;
+    public string Nickname => Name + "#" + Tag;
     
     private Inventory<Item> _inventory = new(10);
     
@@ -87,6 +93,9 @@ public class Hero
         Level = 0;
         MaxHp = 100;
     }
-
-    public string GetNickname() => Name + "#" + Tag;
+    
+    public string GetStats()
+    {
+        return $"{Nickname}: Lvl {Level},  Armor {ArmorAmount}, Damage {DamageAmount}";
+    }
 }
