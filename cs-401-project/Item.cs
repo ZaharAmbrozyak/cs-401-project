@@ -54,6 +54,11 @@ public abstract class Item : IComparable<Item>
         };
     }
 
+
+    public virtual string GetInfo()
+    {
+        return $"[{GetRarity()}] {Name} (вага: {Weight})";
+    }
     public int CompareTo(Item? other)
     {
         if (other == null)

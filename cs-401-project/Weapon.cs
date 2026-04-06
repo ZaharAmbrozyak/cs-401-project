@@ -20,6 +20,11 @@ public class Weapon : Item
         DamageAmount = damageAmount;
     }
 
+    public override string GetInfo()
+    {
+        return $"[{GetRarity()}] {Name} (вага: {Weight}, атака: +{DamageAmount})";
+    }
+
     public override void Use(Hero hero)
     {
         hero.CurrentWeapon = this;

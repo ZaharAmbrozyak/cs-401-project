@@ -20,6 +20,11 @@ public class Armor : Item
         ArmorAmount = armorAmount;
     }
 
+    public override string GetInfo()
+    {
+        return $"[{GetRarity()}] {Name} (вага: {Weight}, захист: +{ArmorAmount})";
+    }
+    
     public override void Use(Hero hero)
     {
         hero.CurrentArmor = this;

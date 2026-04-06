@@ -20,7 +20,12 @@ public class Potion : Item
     {
         HealAmount = healAmount;
     }
-
+    
+    public override string GetInfo()
+    {
+        return $"[{GetRarity()}] {Name} (вага: {Weight}, +{HealAmount} HP)";
+    }
+    
     public override void Use(Hero hero)
     {
         var previousHp = hero.CurrentHp;
