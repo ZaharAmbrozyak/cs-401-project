@@ -34,7 +34,7 @@ public class Armor : Item
             sign = "+";
         }
 
-        Console.WriteLine($"{hero.Name} одягнув {Name}. ATK: {hero.ArmorAmount} -> {ArmorAmount} (зміна {sign}{difference})");
+        Console.WriteLine($"{hero.Name} одягнув {Name}. DEF: {hero.ArmorAmount} -> {ArmorAmount} (зміна {sign}{difference})");
         hero.CurrentArmor = this;
     }
 }

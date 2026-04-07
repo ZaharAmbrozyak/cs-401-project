@@ -14,6 +14,6 @@ public static class Items
         
         {"potion_1", new Potion("potion_1", "Мале зілля здоров'я", 3.0, Rarity.Common, 25)},
         {"potion_2", new Potion("potion_2", "Зілля здоров'я", 4.0, Rarity.Common, 50)},
-        {"potion_3", new Potion("potion_2", "Велике зілля здоров'я", 4.0, Rarity.Common, 100)},
+        {"potion_3", new Potion("potion_3", "Велике зілля здоров'я", 4.0, Rarity.Common, 100)},
     };
 }

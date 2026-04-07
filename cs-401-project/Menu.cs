@@ -15,10 +15,16 @@ public class Menu
         {
             Console.Write("> ");
             var heroInput = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(heroInput))
+            {
+                Console.WriteLine("Команду не знайдено");
+                continue;
+            }
             var tokens = heroInput.Split();
             if (tokens.Length != 2)
             {
-                throw new ArgumentException("Неправильна команда!");
+                Console.WriteLine("Неправильна команда!");
             }
             var (command, argument) = (tokens[0], tokens[1]);
             
@@ -34,7 +40,7 @@ public class Menu
                             hero.PrintStats();
                             break;
                         default:
-                            throw new ArgumentException("Невідомий аргумент: " + argument);
+                            Console.WriteLine("Невідомий аргумент: " + argument);
                     }
                     break;
                 case "Відсортувати":
@@ -44,14 +50,14 @@ public class Menu
                             hero.SortInventory();
                             break;
                         default:
-                            throw new ArgumentException("Невідомий аргумент: " + argument);
+                            Console.WriteLine("Невідомий аргумент: " + argument);
                     }
 
                     break;
                 case "Додати":
                     if (argument[0] != '"' || argument[^1] != '"')
                     {
-                        throw new ArgumentException($"""Expected "[name]" but got {argument}""");
+                        Console.WriteLine($"""Очікувано "[name]" але отримано {argument}""");
                     }
                     
                     var name = argument.Substring(1, argument.Length - 2);
@@ -61,7 +67,7 @@ public class Menu
                     }
                     break;
                 default:
-                    throw new ArgumentException("Невідома команда: " + argument);
+                    Console.WriteLine("Невідома команда: " + argument);
             }
         }
     }

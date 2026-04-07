@@ -127,5 +127,16 @@ public class Hero
         Console.WriteLine($"Інвентар героя {Name} (HP: {CurrentHp}, ATK: {DamageAmount}), DEF: {ArmorAmount}");
         _inventory.Print();
     }
+
+    public void UseItem(string itemName)
+    {
+        var item = _inventory.GetByName(itemName);
+        if (item == null)
+        {
+            throw new ArgumentException($"""Предмет "{itemName} не""");
+        }
+        
+        item.Use(this);
+    }
     
 }
