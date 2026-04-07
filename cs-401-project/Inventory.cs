@@ -93,6 +93,10 @@ public class Inventory<T> : IEnumerable<T> where T : Item
 
     public void Print()
     {
+        if (_inventory.Count == 0)
+        {
+            Console.WriteLine("Тут порожньо!");
+        }
         for (var i = 0; i < _inventory.Count; i++)
         {
             Console.WriteLine($"{i}. {_inventory[i].GetInfo()}");

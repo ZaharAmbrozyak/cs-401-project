@@ -55,6 +55,10 @@ public class Menu
                     }
                     
                     var name = argument.Substring(1, argument.Length - 2);
+                    if (Items.AllItems.TryGetValue(name, out var item))
+                    {
+                        hero.AddItem(item);
+                    }
                     break;
                 default:
                     throw new ArgumentException("Невідома команда: " + argument);

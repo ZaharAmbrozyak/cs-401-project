@@ -83,4 +83,16 @@ public abstract class Item : IComparable<Item>
 
         return this._rarity.CompareTo(other._rarity);
     }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj is Item other)
+        {
+            return Name == other.Name &&
+                   Id == other.Id &&
+                   Weight == other.Weight;
+        }
+
+        return false;
+    }
 }
