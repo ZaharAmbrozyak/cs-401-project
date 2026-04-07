@@ -2,9 +2,8 @@ namespace cs_401_project;
 
 public class Menu
 {
-    private Hero hero = new("Funyusha", "6479");
 
-    public void Run()
+    public void Run(Hero hero)
     {
         Console.WriteLine("Меню героя. Команди:");
         Console.WriteLine("1. Показати інвентар");

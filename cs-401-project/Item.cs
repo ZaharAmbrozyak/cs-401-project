@@ -4,14 +4,14 @@ namespace cs_401_project;
 
 public abstract class Item : IComparable<Item>
 {
-    public int Id
+    public string Id
     {
         get;
         init
         {
-            if (Id < 0)
+            if (string.IsNullOrEmpty(value))
             {
-                throw new ArgumentException("Id should be positive!");
+                throw new ArgumentException("Id cannot be empty!");
             }
 
             field = value;
@@ -48,7 +48,7 @@ public abstract class Item : IComparable<Item>
 
     private Rarity _rarity;
 
-    public Item(int id, string name, double weight, Rarity rarity)
+    public Item(string id, string name, double weight, Rarity rarity)
     {
         Id = id;
         Name = name;

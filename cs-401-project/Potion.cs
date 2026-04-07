@@ -16,7 +16,7 @@ public class Potion : Item
         }
     }
     
-    public Potion(int id, string name, double weight, Rarity rarity, double healAmount) : base(id, name, weight, rarity)
+    public Potion(string id, string name, double weight, Rarity rarity, double healAmount) : base(id, name, weight, rarity)
     {
         HealAmount = healAmount;
     }

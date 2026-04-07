@@ -92,6 +92,9 @@ public class Hero
         Tag = tag;
         Level = 0;
         MaxHp = 100;
+        CurrentArmor = Items.Armors["shirt_1"];
+        CurrentWeapon = Items.Weapons["heavy_branch"];
+
     }
     
     public string GetStats()
