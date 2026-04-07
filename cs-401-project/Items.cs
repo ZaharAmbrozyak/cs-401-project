@@ -16,4 +16,17 @@ public static class Items
         {"potion_2", new Potion("potion_2", "Зілля здоров'я", 4.0, Rarity.Common, 50)},
         {"potion_3", new Potion("potion_3", "Велике зілля здоров'я", 4.0, Rarity.Common, 100)},
     };
+
+    public static Item? GetByName(string name)
+    {
+        foreach (var item in AllItems.Values)
+        {
+            if (item.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
+            {
+                return item;
+            }
+        }
+
+        return null;
+    }
 }

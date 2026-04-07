@@ -38,10 +38,10 @@ public class Menu
             var command = heroInput.Substring(0, spaceIndex).Trim();
             var argument = heroInput.Substring(spaceIndex + 1).Trim();
             
-            switch (command)
+            switch (command.ToLower())
             {
-                case "Показати":
-                    switch (argument)
+                case "показати":
+                    switch (argument.ToLower())
                     {
                         case "інвентар":
                             hero.PrintInventory();
@@ -54,7 +54,7 @@ public class Menu
                             break;
                     }
                     break;
-                case "Відсортувати":
+                case "відсортувати":
                     switch (argument)
                     {
                         case "інвентар":
@@ -65,7 +65,7 @@ public class Menu
                             break;
                     }
                     break;
-                case "Додати":
+                case "додати":
                     if (!argument.StartsWith('"') || !argument.EndsWith('"'))
                     {
                         Console.WriteLine($"""Очікувано "[name]" але отримано {argument}""");
@@ -73,16 +73,16 @@ public class Menu
                     }
                     
                     var itemName = argument.Substring(1, argument.Length - 2);
-                    if (Items.AllItems.TryGetValue(itemName, out var item))
-                    {
-                        hero.AddItem(item);
-                    }
-                    else
+                    var item = Items.GetByName(itemName);
+                    if (item == null)
                     {
                         Console.WriteLine($"Невідомий предмет: {itemName}");
+                        continue;
                     }
+                    hero.AddItem(item);
+                    
                     break;
-                case "Використати":
+                case "використати":
                     if (!argument.StartsWith('"') || !argument.EndsWith('"'))
                     {
                         Console.WriteLine($"""Очікувано "[name]" але отримано {argument}""");

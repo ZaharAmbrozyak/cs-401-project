@@ -9,7 +9,7 @@ public class Potion : Item
         {
             if (value < 0)
             {
-                throw new ArgumentException("Potion heal should be positive!");
+                throw new ArgumentException("Показник відновлення має бути не від'ємним!");
             }
 
             field = value;

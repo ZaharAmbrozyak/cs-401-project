@@ -73,8 +73,11 @@ public class Hero
             {
                 field = MaxHp;
             }
+            else
+            {
+                field = value;
+            }
             
-            field = value;
         }
     }
 
@@ -84,7 +87,7 @@ public class Hero
     public double DamageAmount => CurrentWeapon.DamageAmount;
     public string Nickname => Name + "#" + Tag;
     
-    private Inventory<Item> _inventory = new(10);
+    private Inventory<Item> _inventory;
     
     public Hero(string name, string tag = "0000")
     {
@@ -93,8 +96,13 @@ public class Hero
         Level = 0;
         MaxHp = 100;
         CurrentHp = 100;
+        _inventory = new Inventory<Item>(100);
         CurrentArmor = (Armor)Items.AllItems["shirt_1"];
         CurrentWeapon = (Weapon)Items.AllItems["heavy_branch"];
+        AddItem((Armor)Items.AllItems["shirt_1"]);
+        AddItem((Weapon)Items.AllItems["heavy_branch"]);
+        Console.Clear();
+        
 
     }
     
@@ -133,9 +141,9 @@ public class Hero
         var item = _inventory.GetByName(itemName);
         if (item == null)
         {
-            throw new ArgumentException($"""Предмет "{itemName} не""");
+            Console.WriteLine($"""Предмет "{itemName} не знайдено""");
+            return;
         }
-        
         item.Use(this);
     }
     

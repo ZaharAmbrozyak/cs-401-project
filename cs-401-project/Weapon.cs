@@ -9,7 +9,7 @@ public class Weapon : Item
         {
             if (value < 0)
             {
-                throw new ArgumentException("Damage should be positive!");
+                throw new ArgumentException("Кількість шкоди має бути не від'ємною!");
             }
 
             field = value;
@@ -36,7 +36,6 @@ public class Weapon : Item
             sign = "+";
         }
         
-        Console.WriteLine($"{hero.Name} одягнув {Name}. ATK: {hero.DamageAmount} -> {DamageAmount} (зміна {sign}{difference})");
-        hero.CurrentWeapon = this;
+        Console.WriteLine($"{hero.Name} одягнув {Name}. ATK: {previousDamage} -> {DamageAmount} (зміна {sign}{difference})");
     }
 }

@@ -25,9 +25,9 @@ public class Inventory<T> : IEnumerable<T> where T : Item
         get;
         set
         {
-            if (MaxWeight < 0)
+            if (value < 0)
             {
-                throw new ArgumentException("Inventory weight should be positive!");
+                throw new ArgumentException("Місткість інвентаря має бути невід'ємним числом!");
             }
 
             field = value;
@@ -43,7 +43,8 @@ public class Inventory<T> : IEnumerable<T> where T : Item
     {
         if (InventoryWeight + item.Weight > MaxWeight)
         {
-            throw new ArgumentException("Cannot add this item: inventory is full!");
+            Console.WriteLine("Неможливо додати цей предмет: інвентар переповнений!");
+            return;
         }
         _inventory.Add(item);
         
@@ -99,7 +100,7 @@ public class Inventory<T> : IEnumerable<T> where T : Item
         }
         for (var i = 0; i < _inventory.Count; i++)
         {
-            Console.WriteLine($"{i}. {_inventory[i].GetInfo()}");
+            Console.WriteLine($"{i + 1}. {_inventory[i].GetInfo()}");
         }
         Console.WriteLine($"Вага: {InventoryWeight} / {MaxWeight}");
     }
