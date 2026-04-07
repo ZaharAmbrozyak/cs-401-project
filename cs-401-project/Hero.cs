@@ -69,7 +69,7 @@ public class Hero
             {
                 field = 0;
             }
-            else if (value + CurrentHp > MaxHp)
+            else if (value > MaxHp)
             {
                 field = MaxHp;
             }
@@ -92,6 +92,7 @@ public class Hero
         Tag = tag;
         Level = 0;
         MaxHp = 100;
+        CurrentHp = 100;
         CurrentArmor = (Armor)Items.AllItems["shirt_1"];
         CurrentWeapon = (Weapon)Items.AllItems["heavy_branch"];
 
