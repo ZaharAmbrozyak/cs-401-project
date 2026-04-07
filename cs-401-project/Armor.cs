@@ -15,7 +15,7 @@ public class Armor : Item
             field = value;
         }
     }
-    public Armor(string name, double weight, Rarity rarity, double armorAmount) : base(name, weight, rarity)
+    public Armor(int id, string name, double weight, Rarity rarity, double armorAmount) : base(id, name, weight, rarity)
     {
         ArmorAmount = armorAmount;
     }

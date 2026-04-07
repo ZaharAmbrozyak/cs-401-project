@@ -15,7 +15,7 @@ public class Weapon : Item
             field = value;
         }
     }
-    public Weapon(string name, double weight, Rarity rarity, double damageAmount) : base(name, weight, rarity)
+    public Weapon(int id, string name, double weight, Rarity rarity, double damageAmount) : base(id, name, weight, rarity)
     {
         DamageAmount = damageAmount;
     }

@@ -99,6 +99,10 @@ public class Hero
         return $"{Nickname}: Lvl {Level},  Armor {ArmorAmount}, Damage {DamageAmount}";
     }
 
+    public void PrintStats()
+    {
+        Console.WriteLine(GetStats());
+    }
     public void AddItem(Item item)
     {
         _inventory.Add(item);
@@ -107,6 +111,11 @@ public class Hero
     public void RemoveItem(Item item)
     {
         _inventory.Remove(item);
+    }
+
+    public void SortInventory()
+    {
+        _inventory.SortByRarity();
     }
 
     public void PrintInventory()

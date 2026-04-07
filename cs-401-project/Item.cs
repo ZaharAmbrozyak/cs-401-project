@@ -4,6 +4,20 @@ namespace cs_401_project;
 
 public abstract class Item : IComparable<Item>
 {
+    public int Id
+    {
+        get;
+        init
+        {
+            if (Id < 0)
+            {
+                throw new ArgumentException("Id should be positive!");
+            }
+
+            field = value;
+        }
+    }
+    
     public string Name
     {
         get;
@@ -34,8 +48,9 @@ public abstract class Item : IComparable<Item>
 
     private Rarity _rarity;
 
-    public Item(string name, double weight, Rarity rarity)
+    public Item(int id, string name, double weight, Rarity rarity)
     {
+        Id = id;
         Name = name;
         Weight = weight;
         _rarity = rarity;
