@@ -21,12 +21,22 @@ public class Menu
                 Console.WriteLine("Команду не знайдено");
                 continue;
             }
-            var tokens = heroInput.Split();
-            if (tokens.Length != 2)
+
+            var spaceIndex = heroInput.IndexOf(' ');
+            if (spaceIndex == -1)
             {
-                Console.WriteLine("Неправильна команда!");
+                if (heroInput == "Вийти")
+                {
+                    Console.WriteLine("Вихід з меню");
+                    return;
+                }
+                Console.WriteLine($"Невідома команда: {heroInput}");
+                continue;
             }
-            var (command, argument) = (tokens[0], tokens[1]);
+            
+            
+            var command = heroInput.Substring(0, spaceIndex).Trim();
+            var argument = heroInput.Substring(spaceIndex + 1).Trim();
             
             switch (command)
             {
@@ -41,6 +51,7 @@ public class Menu
                             break;
                         default:
                             Console.WriteLine("Невідомий аргумент: " + argument);
+                            break;
                     }
                     break;
                 case "Відсортувати":
@@ -51,23 +62,38 @@ public class Menu
                             break;
                         default:
                             Console.WriteLine("Невідомий аргумент: " + argument);
+                            break;
                     }
-
                     break;
                 case "Додати":
-                    if (argument[0] != '"' || argument[^1] != '"')
+                    if (!argument.StartsWith('"') || !argument.EndsWith('"'))
                     {
                         Console.WriteLine($"""Очікувано "[name]" але отримано {argument}""");
+                        continue;
                     }
                     
-                    var name = argument.Substring(1, argument.Length - 2);
-                    if (Items.AllItems.TryGetValue(name, out var item))
+                    var itemName = argument.Substring(1, argument.Length - 2);
+                    if (Items.AllItems.TryGetValue(itemName, out var item))
                     {
                         hero.AddItem(item);
                     }
+                    else
+                    {
+                        Console.WriteLine($"Невідомий предмет: {itemName}");
+                    }
+                    break;
+                case "Використати":
+                    if (!argument.StartsWith('"') || !argument.EndsWith('"'))
+                    {
+                        Console.WriteLine($"""Очікувано "[name]" але отримано {argument}""");
+                        continue;
+                    }
+                    var name = argument.Substring(1, argument.Length - 2);
+                    hero.UseItem(name);
                     break;
                 default:
                     Console.WriteLine("Невідома команда: " + argument);
+                    break;
             }
         }
     }
