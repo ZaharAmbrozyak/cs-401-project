@@ -27,7 +27,9 @@ public class Armor : Item
     
     public override void Use(Hero hero)
     {
-        var difference = hero.ArmorAmount - ArmorAmount;
+        var previousArmor = hero.ArmorAmount;
+        hero.CurrentArmor = this;
+        var difference = ArmorAmount - previousArmor;
         var sign = string.Empty;
         if (difference > 0)
         {
@@ -35,6 +37,5 @@ public class Armor : Item
         }
 
         Console.WriteLine($"{hero.Name} одягнув {Name}. DEF: {hero.ArmorAmount} -> {ArmorAmount} (зміна {sign}{difference})");
-        hero.CurrentArmor = this;
     }
 }

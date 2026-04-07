@@ -27,7 +27,9 @@ public class Weapon : Item
 
     public override void Use(Hero hero)
     {
-        var difference = hero.DamageAmount - DamageAmount;
+        var previousDamage = hero.DamageAmount;
+        hero.CurrentWeapon = this;
+        var difference = DamageAmount - previousDamage;
         var sign = string.Empty;
         if (difference > 0)
         {

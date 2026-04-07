@@ -67,10 +67,10 @@ public class Inventory<T> : IEnumerable<T> where T : Item
             if (item.Equals(inventoryItem))
             {
                 _inventory.Remove(item);
+                Console.WriteLine("Предмет видалено з інвентаря.");
                 return;
             }
         }
-        Console.WriteLine("Предмет видалено з інвентаря.");
     }
 
     public T? GetByName(string name)
